@@ -19,7 +19,9 @@
                 </form>
             </div>
         </div> -->
-
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
         <table class="w-100">
             <thead>
                 <tr>
@@ -34,7 +36,7 @@
                 <tr class="border" th:each="pizza : ${pizzas}">
                     <td class="border px-2 py-1" th:text="${pizza.name}"></td>
                     <td class="border px-2 py-1" th:text="${pizza.description}"></td>
-                    <td class="border px-2 py-1" >
+                    <td class="border px-2 py-1">
                         <ul>
                             <li th:each="ingredient : ${pizza.ingredients}" th:text="${ingredient.name}"></li>
                         </ul>
