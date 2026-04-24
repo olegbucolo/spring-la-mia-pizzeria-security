@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <th:block th:replace="~{fragments/styles :: styles}"></th:block>
+    <title>My Pizza</title>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+    <main class="container-md">
+        <!-- <div th:each="pizza : ${pizzas}" class="d-flex justify-content-between p-2 border">
+            <a class="" th:href="@{'/pizzas/' + ${pizza.id}}" th:text="${pizza.name}"></a>
+            <div class="text-end d-flex ">
+                <a th:href="@{'/pizzas/' + ${pizza.id} + '/edit'}" class="me-2">Modifica</a>
+                <form th:action="@{'/pizzas/' + ${pizza.id}}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="bg-danger" type="submit">Elimina</button>
+                </form>
+            </div>
+        </div> -->
+
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th class="">Nome</th>
+                    <th class="">Descrizione</th>
+                    <th class="">Ingredienti</th>
+                    <th class="">Prezzo</th>
+                    <th class="">Azione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border" th:each="pizza : ${pizzas}">
+                    <td class="border px-2 py-1" th:text="${pizza.name}"></td>
+                    <td class="border px-2 py-1" th:text="${pizza.description}"></td>
+                    <td class="border px-2 py-1" >
+                        <ul>
+                            <li th:each="ingredient : ${pizza.ingredients}" th:text="${ingredient.name}"></li>
+                        </ul>
+                    </td>
+                    <td class="border px-2 py-1" th:text="${pizza.price}"></td>
+                    <td>
+                        <button>1</button>
+                        <button>2</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </main>
+</body>
+
+</html>

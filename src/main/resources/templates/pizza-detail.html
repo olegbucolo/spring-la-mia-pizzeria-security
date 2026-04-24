@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <th:block th:replace="fragments/styles :: styles"></th:block>
+    <title>Document</title>
+</head>
+
+<body>
+    <th:block th:replace="fragments/header :: header"></th:block>
+    <main>
+        <div th:text="${pizza.name}"></div>
+        <div th:text="${pizza.description}"></div>
+        <div th:text="${pizza.price} + ' €'"></div>
+        <div th:each="offer : ${pizza.specialOffers}">
+            <span th:text="${offer.title}"></span>
+            <span th:text="${offer.discount} + '%'"></span>
+            <span th:text="${offer.startDate}"></span>
+            -
+            <span th:text="${offer.endDate}"></span>
+            <!-- edit button -->
+            <a th:href="@{/offers/{id}/edit(id=${offer.id})}">Modifica offerta</a>
+        </div>
+
+        <h4>Ingredienti presenti nella pizza:</h4>
+        <div th:each="ingredient : ${pizza.ingredients}" th:text="${ingredient.name}"></div>
+        <a th:href="@{/pizzas/{id}/edit(id=${pizza.id})}">Modifica pizza</a>
+        <a th:href="@{/offers/create(pizzaId=${pizza.id})}">Aggiungi un offerta</a>
+    </main>
+</body>
+
+</html>

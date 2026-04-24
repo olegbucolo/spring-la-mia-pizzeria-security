@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <th:block th:replace="~{fragments/styles :: styles}">
+
+    </th:block>
+    <title>Ingredients Page</title>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+    <main>
+        <div>
+            <h2>La lista dei nostri ingredienti:</h2>
+            <div class="w-25 border border-bottom d-flex" th:each="ingredient : ${ingredients}">
+                <span th:text="${ingredient.name}"></span>
+                <form class="d-inline ms-auto" th:action="@{'/ingredients/' + ${ingredient.id}}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="bg-danger">Elimina</button>
+                </form>
+            </div>
+            <form th:action="@{/ingredients/create}" >
+                <button class="mt-3 fw-bold text-success" type="submit">Crea nuovo ingrediente</button>
+
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
