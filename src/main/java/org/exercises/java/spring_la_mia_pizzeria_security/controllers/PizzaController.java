@@ -100,8 +100,13 @@ public class PizzaController {
             System.out.println("Consollogghi");
             return "pizza-edit";
         }
-        pizza.setId(id);
-        pr.save(pizza);
+
+        Pizza pizzaFromDb = pr.findById(id).orElseThrow();
+        pizzaFromDb.setName(pizza.getName());
+        pizzaFromDb.setDescription(pizza.getDescription());
+        pizzaFromDb.setPrice(pizza.getPrice());
+        pizzaFromDb.setId(id);
+        pr.save(pizzaFromDb);
         return "redirect:/pizzas";
     }
 

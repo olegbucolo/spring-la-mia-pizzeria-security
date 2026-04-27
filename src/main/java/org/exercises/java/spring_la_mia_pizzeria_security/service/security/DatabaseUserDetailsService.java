@@ -4,7 +4,9 @@ import org.exercises.java.spring_la_mia_pizzeria_security.repositories.UserRepos
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DatabaseUserDetailsService implements UserDetailsService {
     
     private final UserRepository userRepository;

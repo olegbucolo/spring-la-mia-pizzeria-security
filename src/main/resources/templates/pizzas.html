@@ -8,7 +8,7 @@
 
 <body>
     <th:block th:replace="~{fragments/header :: header}"></th:block>
-    <main class="container-md">
+    <main class="container">
         <!-- <div th:each="pizza : ${pizzas}" class="d-flex justify-content-between p-2 border">
             <a class="" th:href="@{'/pizzas/' + ${pizza.id}}" th:text="${pizza.name}"></a>
             <div class="text-end d-flex ">
@@ -19,9 +19,7 @@
                 </form>
             </div>
         </div> -->
-        <form th:action="@{/logout}" method="post">
-            <button type="submit">Logout</button>
-        </form>
+        
         <table class="w-100">
             <thead>
                 <tr>
@@ -29,22 +27,30 @@
                     <th class="">Descrizione</th>
                     <th class="">Ingredienti</th>
                     <th class="">Prezzo</th>
-                    <th class="">Azione</th>
+                    <th sec:authorize="hasRole('ADMIN')" class="">Azione</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="border" th:each="pizza : ${pizzas}">
-                    <td class="border px-2 py-1" th:text="${pizza.name}"></td>
+                    <td class="border px-2 py-1" >
+                        <a th:href="@{'/pizzas/' + ${pizza.id}}" th:text="${pizza.name}"></a>
+                    </td>
                     <td class="border px-2 py-1" th:text="${pizza.description}"></td>
                     <td class="border px-2 py-1">
                         <ul>
                             <li th:each="ingredient : ${pizza.ingredients}" th:text="${ingredient.name}"></li>
                         </ul>
                     </td>
-                    <td class="border px-2 py-1" th:text="${pizza.price}"></td>
-                    <td>
-                        <button>1</button>
-                        <button>2</button>
+                    <td class="border px-2 py-1" th:text="${pizza.price} + ' €'"></td>
+                    <td sec:authorize="hasRole('ADMIN')">
+                        <form th:action="@{'/pizzas/' + ${pizza.id} + '/edit'}" method="GET">
+                            <!-- <input type="hidden" name="_method" value="PUT"> -->
+                            <button>Modifica</button>
+                        </form>
+                        <form  th:action="@{'/pizzas/' + ${pizza.id}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Elimina</button>
+                        </form>
                     </td>
                 </tr>
 

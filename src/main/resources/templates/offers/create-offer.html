@@ -8,30 +8,32 @@
 
 <body>
     <th:block th:replace="~{fragments/header :: header}"></th:block>
-    <form th:action="@{/offers}" th:object="${offer}" method="POST">
-        <div>
-            <label for="title"></label>
-            <input id="title" type="text" th:field="*{title}">
-            <div th:if="${#fields.hasErrors('title')}" th:error="*{title}"></div>
-        </div>
-        <div>
-            <label for="discount"></label>
-            <input id="discount" type="number" th:field="*{discount}">
-            <div th:if="${#fields.hasErrors('discount')}" th:error="*{discount}"></div>
-        </div>
-        <div>
-            <label for="startDate"></label>
-            <input id="startDate" type="date" th:field="*{startDate}">
-            <div th:if="${#fields.hasErrors('startDate')}" th:error="*{startDate}"></div>
-        </div>
-        <div>
-            <label for="endDate"></label>
-            <input id="endDate" type="date" th:field="*{endDate}">
-            <div th:if="${#fields.hasErrors('endDate')}" th:error="*{endDate}"></div>
-        </div>
-        <input type="hidden" name="pizzaId" th:value="${pizzaId}">
-        <button type="submit">fuck!</button>
-    </form>
+    <main class="container">
+        <form th:action="@{/offers}" th:object="${offer}" method="POST">
+            <div>
+                <label for="title"></label>
+                <input id="title" type="text" th:field="*{title}">
+                <div th:if="${#fields.hasErrors('title')}" th:error="*{title}"></div>
+            </div>
+            <div>
+                <label for="discount"></label>
+                <input id="discount" type="number" th:field="*{discount}">
+                <div th:if="${#fields.hasErrors('discount')}" th:error="*{discount}"></div>
+            </div>
+            <div>
+                <label for="startDate"></label>
+                <input id="startDate" type="date" th:field="*{startDate}">
+                <div th:if="${#fields.hasErrors('startDate')}" th:error="*{startDate}"></div>
+            </div>
+            <div>
+                <label for="endDate"></label>
+                <input id="endDate" type="date" th:field="*{endDate}">
+                <div th:if="${#fields.hasErrors('endDate')}" th:error="*{endDate}"></div>
+            </div>
+            <input type="hidden" name="pizzaId" th:value="${pizzaId}">
+            <button type="submit">fuck!</button>
+        </form>
+    </main>
 </body>
 
 </html>

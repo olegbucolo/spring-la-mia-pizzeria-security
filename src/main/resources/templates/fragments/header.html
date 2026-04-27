@@ -1,9 +1,16 @@
 <th:block th:fragment="header">
-    <header class="bg-dark py-2">
-        <nav>
-            <a class="me-5 text-light " href="/pizzas">Tutte le Pizze</a>
-            <a class="me-5 text-light " href="/pizzas/create">Aggiungi Pizza</a>
-            <a class=" text-light " href="/ingredients">Ingredienti</a>
+    <header class="container container-xl bg-dark py-2">
+        <nav class="d-flex justify-content-between">
+            <div class="left">
+                <a class="me-5 text-light " href="/pizzas">Tutte le Pizze</a>
+                <a sec:authorize="hasRole('ADMIN')" class="me-5 text-light " href="/pizzas/create">Aggiungi Pizza</a>
+                <a sec:authorize="hasRole('ADMIN')" class=" text-light " href="/ingredients">Ingredienti</a>
+            </div>
+            <div class="right">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
         </nav>
     </header>
 </th:block>

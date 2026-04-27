@@ -8,7 +8,7 @@
 
 <body>
     <th:block th:replace="fragments/header :: header"></th:block>
-    <main>
+    <main class="container">
         <div th:text="${pizza.name}"></div>
         <div th:text="${pizza.description}"></div>
         <div th:text="${pizza.price} + ' €'"></div>

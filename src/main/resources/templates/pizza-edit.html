@@ -8,7 +8,7 @@
 
 <body>
     <th:block th:replace="~{fragments/header :: header}"></th:block>
-    <main>
+    <main class="container">
         <form th:action="@{'/pizzas/' + ${pizza.id}}" th:object="${pizza}" method="post">
             <div>
                 <label for="name">Name</label>

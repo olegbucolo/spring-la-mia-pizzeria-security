@@ -10,7 +10,7 @@
 
 <body>
     <th:block th:replace="~{fragments/header :: header}"></th:block>
-    <main>
+    <main class="container">
         <div>
             <h2>La lista dei nostri ingredienti:</h2>
             <div class="w-25 border border-bottom d-flex" th:each="ingredient : ${ingredients}">
